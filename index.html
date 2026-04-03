@@ -3,132 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moe-Charm's Dev Challenges</title>
+    <title>NyanZip - Launching...</title>
+    <meta http-equiv="refresh" content="0; url=./20260402april/">
     <style>
         :root {
-            --primary-color: #ff85a2;
-            --bg-color: #fff0f3;
-            --card-bg: #ffffff;
-            --text-color: #5d4a4a;
+            --bg1: #fff1f5;
+            --bg2: #ffe0ea;
+            --ink: #5a4050;
+            --accent: #ff6f9b;
+            --panel: rgba(255, 255, 255, 0.82);
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
             margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             min-height: 100vh;
-        }
-
-        header {
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        header h1 {
-            color: var(--primary-color);
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        header p {
-            font-size: 1.1rem;
-            opacity: 0.8;
-        }
-
-        .container {
-            max-width: 900px;
-            width: 95%;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-            padding: 20px;
+            place-items: center;
+            font-family: "Helvetica Neue", Arial, "Hiragino Sans", Meiryo, sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at top, rgba(255, 255, 255, 0.95), transparent 35%),
+                linear-gradient(135deg, var(--bg1), var(--bg2));
         }
 
-        .challenge-card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 25px;
-            text-decoration: none;
-            color: inherit;
-            box-shadow: 0 4px 15px rgba(255, 133, 162, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            border: 2px solid transparent;
-        }
-
-        .challenge-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(255, 133, 162, 0.2);
-            border-color: var(--primary-color);
-        }
-
-        .challenge-card .date {
-            font-size: 0.85rem;
-            color: #999;
-            margin-bottom: 8px;
-        }
-
-        .challenge-card .title {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-
-        .challenge-card .description {
-            font-size: 0.95rem;
-            line-height: 1.5;
-            flex-grow: 1;
-        }
-
-        .challenge-card .btn {
-            margin-top: 15px;
-            padding: 8px 15px;
-            background: var(--primary-color);
-            color: white;
-            border-radius: 20px;
+        .card {
+            width: min(560px, calc(100vw - 32px));
+            padding: 32px 28px;
+            border-radius: 24px;
+            background: var(--panel);
+            box-shadow: 0 20px 60px rgba(255, 111, 155, 0.18);
+            backdrop-filter: blur(10px);
             text-align: center;
-            font-size: 0.9rem;
-            font-weight: bold;
         }
 
-        footer {
-            margin-top: auto;
-            padding: 40px;
+        h1 {
+            margin: 0 0 12px;
+            color: var(--accent);
+            font-size: clamp(2rem, 5vw, 3rem);
+            line-height: 1.1;
+        }
+
+        p {
+            margin: 0 0 18px;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        a {
+            display: inline-block;
+            padding: 12px 18px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .hint {
+            margin-top: 14px;
             font-size: 0.9rem;
-            opacity: 0.7;
+            opacity: 0.75;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Dev Challenges</h1>
-        <p>moe-charm による、日々のチャレンジ一覧だにゃ🐾</p>
-    </header>
-
-    <div class="container">
-        <!-- 20260402april -->
-        <a href="./20260402april/" class="challenge-card">
-            <div>
-                <div class="date">2026.04.02</div>
-                <div class="title">NyanZip</div>
-                <div class="description">
-                    "The World's Cutest Compression Tool"<br>
-                    可愛さ重視の圧縮ツールにゃ！
-                </div>
-            </div>
-            <div class="btn">View Challenge</div>
-        </a>
-    </div>
-
-    <footer>
-        &copy; 2026 moe-charm. Built with 💖 and Code.
-    </footer>
+    <main class="card">
+        <h1>🐈 NyanZip 🐾</h1>
+        <p>
+            公開ページをアプリ本体へ案内するにゃ。
+            すぐに開かない場合は下のボタンを押してほしいにゃ。
+        </p>
+        <p>
+            <a href="./20260402april/">Open NyanZip</a>
+        </p>
+        <div class="hint">If the redirect is slow, your browser may be blocking auto-forwarding.</div>
+    </main>
+    <script>
+        location.replace('./20260402april/');
+    </script>
 </body>
 </html>
