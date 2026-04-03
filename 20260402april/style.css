@@ -134,13 +134,15 @@ button:hover { opacity: 0.8; transform: translateY(-2px); }
 .btn-wrap {
     width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
     margin-top: 5px;
 }
 
 .small-btn {
     display: block;      /* ブロック要素にして */
-    margin: 10px auto;   /* 左右のマージンをautoにして中央へ */
+    margin: 0;
     font-size: 0.8rem; 
     background: #aaa; 
     padding: 6px 15px; 
@@ -149,6 +151,10 @@ button:hover { opacity: 0.8; transform: translateY(-2px); }
     border: none;
     color: white;
     cursor: pointer;
+}
+
+.voice-btn {
+    background: linear-gradient(135deg, #7a5cff, #a06bff);
 }
 
 .stats {
@@ -208,6 +214,11 @@ body.ultra-theme .small-btn {
     background: gold;
     color: black;
     font-weight: bold;
+}
+
+body.ultra-theme .voice-btn {
+    background: gold;
+    color: black;
 }
 
 footer { text-align: center; margin-top: 30px; font-size: 0.8rem; color: #aaa; }
