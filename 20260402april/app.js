@@ -24,6 +24,9 @@ const voiceState = {
     button: null,
     utterance: null,
     meowTimer: null,
+    safetyTimer: null,
+    meowCount: 0,
+    meowLimit: 0,
     activeClips: new Set(),
 };
 
@@ -36,8 +39,13 @@ function setVoiceButtonLabels(isSpeaking) {
 
 function clearVoicePlayback(cancelSpeech = false) {
     if (voiceState.meowTimer) {
-        clearInterval(voiceState.meowTimer);
+        clearTimeout(voiceState.meowTimer);
         voiceState.meowTimer = null;
+    }
+
+    if (voiceState.safetyTimer) {
+        clearTimeout(voiceState.safetyTimer);
+        voiceState.safetyTimer = null;
     }
 
     for (const clip of voiceState.activeClips) {
@@ -58,6 +66,8 @@ function clearVoicePlayback(cancelSpeech = false) {
     voiceState.textareaId = null;
     voiceState.button = null;
     voiceState.utterance = null;
+    voiceState.meowCount = 0;
+    voiceState.meowLimit = 0;
     setVoiceButtonLabels(false);
 }
 
@@ -71,6 +81,18 @@ function playRandomMeow() {
     audio.play().catch(() => {
         voiceState.activeClips.delete(audio);
     });
+}
+
+function scheduleMeowBurst() {
+    if (!voiceState.speaking) return;
+    if (voiceState.meowCount >= voiceState.meowLimit) return;
+
+    voiceState.meowCount += 1;
+    playRandomMeow();
+
+    voiceState.meowTimer = setTimeout(() => {
+        scheduleMeowBurst();
+    }, ultraMode ? 1400 : 1800);
 }
 
 function toSpeechText(rawText) {
@@ -120,9 +142,15 @@ function speakNyan(textareaId, button) {
         voiceState.speaking = true;
         voiceState.textareaId = textareaId;
         voiceState.button = button || null;
+        voiceState.meowCount = 0;
+        voiceState.meowLimit = Math.max(1, Math.min(6, Math.ceil(speechText.length / 30)));
         setVoiceButtonLabels(true);
-        playRandomMeow();
-        voiceState.meowTimer = setInterval(playRandomMeow, ultraMode ? 900 : 1200);
+        scheduleMeowBurst();
+        voiceState.safetyTimer = setTimeout(() => {
+            if (voiceState.speaking && voiceState.utterance === utterance) {
+                clearVoicePlayback(true);
+            }
+        }, Math.max(6000, Math.min(30000, speechText.length * (ultraMode ? 140 : 180))));
     };
     utterance.onend = () => {
         if (voiceState.utterance !== utterance) return;
