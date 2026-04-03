@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NyanZip - The World's Cutest Compression Tool</title>
+    <link rel="stylesheet" href="style.css?v=1.5">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="lang-toggle">
+            <button id="lang-ja" class="lang-btn">JP</button>
+            <button id="lang-en" class="lang-btn active">EN</button>
+        </div>
+
+        <header>
+            <h1 data-i18n="title">🐈 NyanZip 🐾</h1>
+            <p data-i18n="subtitle">～ 圧縮すればするほど、愛（サイズ）が溢れ出す ～</p>
+            <div id="ultra-explain" class="ultra-explain hidden">
+                <p data-i18n="ultraExplain"></p>
+            </div>
+        </header>
+
+        <div class="api-section">
+            <label for="api-key" data-i18n="apiKeyLabel">Gemini API Key (オプション):</label>
+            <input type="password" id="api-key" placeholder="AIの猫語レビューが欲しい場合は入れるにゃ" data-i18n-placeholder="apiKeyPlaceholder">
+        </div>
+
+        <main class="grid-layout">
+            <!-- 圧縮セクション -->
+            <section class="card compress-section">
+                <h2 data-i18n="compressTitle">🐾 巨大化 (Compress)</h2>
+                <div class="field">
+                    <label data-i18n="compressInputLabel">元の言葉を入れるにゃ：</label>
+                    <textarea id="c-input" placeholder="こんにちは..." data-i18n-placeholder="compressPlaceholder"></textarea>
+                </div>
+                <div class="actions">
+                    <button id="btn-compress" data-i18n="compressBtn">Nyan-Compress!!</button>
+                </div>
+                <div class="field">
+                    <label data-i18n="compressOutputLabel">生成された猫語：</label>
+                    <textarea id="c-output" readonly placeholder="meow MEOW!!..."></textarea>
+                    <div class="btn-wrap">
+                        <button class="small-btn" onclick="copyText('c-output')" data-i18n="copyBtn">コピーするにゃ</button>
+                    </div>
+                </div>
+                <div id="c-stats" class="stats hidden">
+                    <span data-i18n="compressStats">増加率: </span><span id="c-ratio">0</span>% 🐈✨
+                </div>
+            </section>
+
+            <!-- 復元セクション -->
+            <section class="card decompress-section">
+                <h2>🐾 復元 (Decompress)</h2>
+                <div class="field">
+                    <label data-i18n="decompressInputLabel">猫語を入れるにゃ：</label>
+                    <textarea id="d-input" placeholder="--- 🐈 NyanZip v1.1 🐾 --- ..." data-i18n-placeholder="decompressPlaceholder"></textarea>
+                </div>
+                <div class="actions">
+                    <button id="btn-decompress" class="secondary" data-i18n="decompressBtn">Nyan-Decompress!!</button>
+                </div>
+                <div class="field">
+                    <label data-i18n="decompressOutputLabel">復元された言葉：</label>
+                    <textarea id="d-output" readonly placeholder="Hello..." data-i18n-placeholder="decompressPlaceholder"></textarea>
+                    <div class="btn-wrap">
+                        <button class="small-btn" onclick="copyText('d-output')" data-i18n="copyBtn">コピーするにゃ</button>
+                    </div>
+                </div>
+                <div id="d-stats" class="stats hidden">
+                    <span data-i18n="decompressStats">縮小率: </span><span id="d-ratio">0</span>% 😻
+                </div>
+            </section>
+        </main>
+
+        <div id="ai-review" class="ai-review hidden">
+            <h3 data-i18n="reviewTitle">🐈 猫の査定コメント：</h3>
+            <p id="review-text">通信中にゃ...</p>
+        </div>
+
+        <footer>
+            <div id="teapot-btn" style="cursor: pointer; display: inline-block; padding: 20px; font-size: 1.5rem;">
+                🫖
+            </div>
+            <p>© 2026 NyanZip Project</p>
+        </footer>
+    </div>
+
+    <script type="importmap">
+        {
+          "imports": {
+            "@google/generative-ai": "https://esm.run/@google/generative-ai"
+          }
+        }
+    </script>
+    <script>
+        async function copyText(id) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.select();
+            document.execCommand('copy');
+            const btn = event.target;
+            if (btn && btn.tagName === 'BUTTON') {
+                const old = btn.textContent;
+                btn.textContent = '...'; 
+                setTimeout(() => {
+                    // ここで元の文字に戻る
+                }, 2000);
+            }
+        }
+    </script>
+    <script type="module" src="app.js?v=1.8"></script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+:root {
+    --primary-color: #ff85a2;
+    --secondary-color: #a2d2ff;
+    --background-color: #fff1f2;
+    --text-color: #4a4a4a;
+    --accent-color: #ff4d6d;
+    --white: #ffffff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.4;
+    padding: 10px;
+}
+
+.lang-toggle {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    display: flex;
+    gap: 5px;
+}
+
+.lang-btn {
+    background: #eee;
+    color: #666;
+    border: 2px solid #ddd;
+    padding: 3px 8px;
+    font-size: 0.75rem;
+    min-width: 45px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+.lang-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+header { text-align: center; margin-bottom: 20px; }
+h1 { 
+    color: var(--accent-color); 
+    font-size: 2rem; 
+    cursor: pointer;
+    user-select: none; /* テキスト選択を防止 */
+    transition: transform 0.1s;
+}
+
+h1:active {
+    transform: scale(0.95); /* クリックした時に少し小さくなるにゃ */
+}
+
+.api-section { margin-bottom: 20px; text-align: center; }
+.api-section input {
+    padding: 8px; border-radius: 10px; border: 2px solid var(--primary-color); width: 300px; max-width: 80%;
+}
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .grid-layout { grid-template-columns: 1fr; }
+}
+
+.card {
+    background: #fff8f9;
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px solid var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.decompress-section { border-color: var(--secondary-color); background: #f0f7ff; }
+
+h2 { font-size: 1.2rem; margin-bottom: 10px; text-align: center; }
+
+.field { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 10px; 
+    align-items: center; /* 子要素自体を中央に */
+    text-align: center;  /* テキスト自体も中央に */
+    width: 100%;
+}
+
+label { 
+    font-size: 0.85rem; 
+    font-weight: bold; 
+    width: 100%; /* 幅いっぱいに広げてテキストを中央に */
+}
+
+textarea {
+    width: 100%; 
+    height: 100px; 
+    padding: 10px; 
+    border-radius: 15px;
+    border: 2px solid #ddd; 
+    font-family: inherit; 
+    resize: none;
+}
+
+.actions { 
+    display: flex; 
+    justify-content: center; 
+    margin: 5px 0;
+}
+
+button {
+    background: var(--primary-color); 
+    color: white; 
+    border: none; 
+    padding: 10px 25px;
+    font-weight: bold; 
+    border-radius: 25px; 
+    cursor: pointer; 
+    transition: 0.2s;
+    min-width: 180px;
+}
+
+button.secondary { background: var(--secondary-color); }
+button:hover { opacity: 0.8; transform: translateY(-2px); }
+
+.btn-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.small-btn {
+    display: block;      /* ブロック要素にして */
+    margin: 10px auto;   /* 左右のマージンをautoにして中央へ */
+    font-size: 0.8rem; 
+    background: #aaa; 
+    padding: 6px 15px; 
+    border-radius: 20px;
+    min-width: 140px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.stats {
+    font-size: 0.9rem; font-weight: bold; text-align: center; color: var(--accent-color);
+}
+
+.ai-review {
+    margin-top: 30px; background: #fff; padding: 15px; border-radius: 20px;
+    border-left: 10px solid var(--primary-color); box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.hidden { display: none; }
+
+/* Ultra Mode Theme */
+body.ultra-theme {
+    background-color: #0b0c10; /* より深い黒 */
+    --primary-color: #ffd700;
+    --secondary-color: #45a29e;
+    --accent-color: #66fcf1;
+    --background-color: #1f2833;
+    color: #ffffff; /* 全体の文字を白に */
+}
+
+body.ultra-theme .container {
+    border-color: gold;
+    background: #1f2833;
+    color: #ffffff;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+body.ultra-theme h1 {
+    color: #ffd700 !important;
+    font-size: 1.6rem; /* 少し小さくして1行に収めるにゃ */
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+    margin-bottom: 5px;
+}
+
+body.ultra-theme header p {
+    color: #66fcf1 !important; /* サブタイトルを明るいシアンに */
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+body.ultra-theme .card {
+    background: #0b0c10;
+    border-color: #45a29e;
+    color: #ffffff;
+}
+
+body.ultra-theme textarea {
+    background: #1f2833;
+    color: #66fcf1;
+    border-color: #45a29e;
+}
+
+body.ultra-theme .small-btn {
+    background: gold;
+    color: black;
+    font-weight: bold;
+}
+
+footer { text-align: center; margin-top: 30px; font-size: 0.8rem; color: #aaa; }
+footer p {
+    cursor: pointer;
+    user-select: none;
+    display: inline-block;
+    padding: 10px;
+    transition: color 0.3s;
+}
+footer p:hover {
+    color: var(--primary-color);
+}
+
+
+.ultra-explain {
+    margin: 15px auto;
+    padding: 10px 20px;
+    border: 2px solid gold;
+    border-radius: 15px;
+    background: rgba(255, 215, 0, 0.1);
+    max-width: 80%;
+}
+.ultra-explain p {
+    color: #ffd700 !important;
+    font-size: 0.85rem !important;
+    line-height: 1.5;
+}
+
