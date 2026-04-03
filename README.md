@@ -25,7 +25,7 @@ NyanZip takes normal text and turns it into a cat-flavored mess of `meow` and `M
 
 ## Project Structure
 
-- `index.html` - repository landing page and redirect to the app
+- `index.html` - repository landing page and challenge index
 - `20260402april/index.html` - main app UI
 - `20260402april/app.js` - app logic
 - `20260402april/js/engine.js` - cat-text encode/decode core
@@ -34,4 +34,4 @@ NyanZip takes normal text and turns it into a cat-flavored mess of `meow` and `M
 
 ## Notes
 
-If you open the repository on GitHub, this README gives you the fastest path to the actual app. The root `index.html` also redirects to the app for convenience when hosted on GitHub Pages.
+If you open the repository on GitHub, this README gives you the fastest path to the actual app. The root `index.html` is kept as a challenge index so future experiments can be added alongside NyanZip.
