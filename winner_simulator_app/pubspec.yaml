@@ -59,6 +59,13 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+  assets:
+    - assets/20260411winner/index.html
+    - assets/20260411winner/firework.mp3
+    - assets/20260411winner/majestic-sky.mp3
+    - assets/20260411winner/js/sound.js
+    - assets/20260411winner/js/effects.js
+
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

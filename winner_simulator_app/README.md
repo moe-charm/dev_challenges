@@ -5,7 +5,8 @@ Windows-only Flutter shell for the DEV April Fools challenge.
 ## What It Does
 
 - Starts a desktop window on Windows
-- Serves the HTML challenge from the sibling `20260411winner/` folder
+- Embeds the `20260411winner/` challenge into the app bundle
+- Materializes the embedded files into a temp folder at launch
 - Loads that page inside WebView2
 
 ## Requirements
@@ -29,4 +30,5 @@ flutter build windows --debug
 
 ## Notes
 
-If the app cannot find the HTML folder, keep `winner_simulator_app/` next to `20260411winner/` in the repository root.
+The HTML challenge lives in `assets/20260411winner/` and is bundled with the app.
+The app no longer depends on a sibling folder at runtime, so release builds can ship as a single binary bundle.
