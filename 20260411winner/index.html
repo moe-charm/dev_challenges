@@ -27,13 +27,13 @@
     #crawl{background:#000;min-height:100vh;overflow:hidden;position:relative;}
     .crawl-fade-top{position:absolute;top:0;left:0;right:0;height:30%;background:linear-gradient(to bottom,#000 0%,transparent 100%);z-index:2;pointer-events:none;}
     .crawl-fade-bot{position:absolute;bottom:0;left:0;right:0;height:20%;background:linear-gradient(to top,#000 0%,transparent 100%);z-index:2;pointer-events:none;}
-    .crawl-stage{position:relative;width:100%;height:100vh;overflow:hidden;perspective:300px;}
-    .crawl-track{position:absolute;bottom:0;left:50%;transform:translateX(-50%) rotateX(25deg);transform-origin:50% 100%;width:min(1100px,94%);animation:crawl-scroll 110s linear forwards;animation-play-state:paused;padding-bottom:60vh;}
+    .crawl-stage{position:relative;width:100%;height:100vh;overflow:hidden;}
+    .crawl-track{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:min(1000px,94%);animation:crawl-scroll 100s linear forwards;animation-play-state:paused;padding-bottom:60vh;}
     .crawl-track.running{animation-play-state:running;}
     @keyframes crawl-scroll{from{bottom:0}to{bottom:400%}}
     .crawl-logo{font-family:'Bebas Neue',sans-serif;font-size:clamp(1rem,3vw,1.6rem);color:var(--gold);letter-spacing:.3em;text-align:center;margin-bottom:32px;opacity:.7;}
     .crawl-intro{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,10vw,7rem);color:var(--gold);text-align:center;line-height:1.1;margin-bottom:48px;filter:drop-shadow(0 0 30px var(--gold-glow));}
-    .crawl-body{color:rgba(255,215,0,.8);font-size:clamp(1.2rem,3vw,1.8rem);line-height:1.8;text-align:justify;margin-bottom:48px;}
+    .crawl-body{color:rgba(255,215,0,.8);font-size:clamp(1.2rem,3vw,1.8rem);line-height:1.8;text-align:center;margin-bottom:48px;}
     .crawl-credits{margin-top:20px;}
     .crawl-credit-row{display:flex;justify-content:space-between;padding:12px 0;border-top:1px solid rgba(255,215,0,.1);font-size:clamp(.8rem,1.8vw,1rem);}
     .crawl-credit-row .role{color:rgba(255,215,0,.45);letter-spacing:.08em;font-family:'Bebas Neue',sans-serif;}
