@@ -32,6 +32,9 @@ flutter build windows --debug
 
 To distribute the app, package the entire `build/windows/x64/runner/Release/` folder as a ZIP.
 
+Published release:
+[Winner Simulator 2026 (Windows)](https://github.com/moe-charm/dev_challenges/releases/tag/winner-simulator-20260411)
+
 The ZIP should include:
 
 - `winner_simulator_app.exe`
