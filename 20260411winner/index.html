@@ -18,9 +18,26 @@
     body{font-family:'Noto Sans JP',sans-serif;background:linear-gradient(180deg,var(--dark-bg) 0%,var(--dark-mid) 100%);background-attachment:fixed;color:#fff;overflow-x:hidden;}
 
     /* ===== LANG TOGGLE ===== */
-    #lang-toggle{position:fixed;top:46px;right:16px;z-index:500;display:flex;gap:6px;}
+    #lang-toggle{position:fixed;top:46px;right:16px;z-index:500;display:flex;gap:6px;align-items:center;}
     .lang-btn{padding:5px 14px;border-radius:99px;border:1px solid rgba(255,215,0,.4);background:rgba(0,0,0,.4);color:rgba(255,255,255,.6);font-size:.8rem;cursor:pointer;backdrop-filter:blur(8px);letter-spacing:.08em;transition:all .2s;}
     .lang-btn.active{background:var(--gold);color:#000;font-weight:700;border-color:var(--gold);}
+    #bgm-btn{padding:5px 12px;border-radius:99px;border:1px solid rgba(255,255,255,.2);background:rgba(0,0,0,.4);color:rgba(255,255,255,.5);font-size:.8rem;cursor:pointer;backdrop-filter:blur(8px);transition:all .2s;margin-right:4px;}
+    #bgm-btn.on{border-color:var(--gold);color:var(--gold);}
+    /* ===== STAR WARS CRAWL ===== */
+    #crawl{background:#000;min-height:100vh;overflow:hidden;position:relative;}
+    .crawl-fade-top{position:absolute;top:0;left:0;right:0;height:30%;background:linear-gradient(to bottom,#000 0%,transparent 100%);z-index:2;pointer-events:none;}
+    .crawl-fade-bot{position:absolute;bottom:0;left:0;right:0;height:20%;background:linear-gradient(to top,#000 0%,transparent 100%);z-index:2;pointer-events:none;}
+    .crawl-stage{position:relative;width:100%;height:100vh;overflow:hidden;perspective:450px;}
+    .crawl-track{position:absolute;bottom:0;left:50%;transform:translateX(-50%) rotateX(30deg);transform-origin:50% 100%;width:min(640px,85%);animation:crawl-scroll 60s linear forwards;animation-play-state:paused;padding-bottom:60vh;}
+    .crawl-track.running{animation-play-state:running;}
+    @keyframes crawl-scroll{from{bottom:0}to{bottom:400%}}
+    .crawl-logo{font-family:'Bebas Neue',sans-serif;font-size:clamp(1rem,3vw,1.6rem);color:var(--gold);letter-spacing:.3em;text-align:center;margin-bottom:32px;opacity:.7;}
+    .crawl-intro{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,7vw,5rem);color:var(--gold);text-align:center;line-height:1.1;margin-bottom:48px;filter:drop-shadow(0 0 30px var(--gold-glow));}
+    .crawl-body{color:rgba(255,215,0,.8);font-size:clamp(.9rem,2vw,1.2rem);line-height:2.1;text-align:justify;margin-bottom:48px;}
+    .crawl-credits{margin-top:20px;}
+    .crawl-credit-row{display:flex;justify-content:space-between;padding:12px 0;border-top:1px solid rgba(255,215,0,.1);font-size:clamp(.8rem,1.8vw,1rem);}
+    .crawl-credit-row .role{color:rgba(255,215,0,.45);letter-spacing:.08em;font-family:'Bebas Neue',sans-serif;}
+    .crawl-credit-row .name{color:var(--gold);font-weight:700;}
 
     /* ===== SPLASH ===== */
     #splash{position:fixed;inset:0;z-index:1000;background:linear-gradient(135deg,#0a0a0f 0%,#1a0a2e 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:28px;padding:24px;transition:opacity .8s ease,visibility .8s ease;}
@@ -149,8 +166,9 @@
 <canvas id="confetti-canvas"></canvas>
 <div class="stars" id="stars"></div>
 
-<!-- LANG TOGGLE -->
+<!-- LANG TOGGLE + BGM -->
 <div id="lang-toggle">
+  <button id="bgm-btn" onclick="toggleBGMBtn()" title="Toggle Music">🎵</button>
   <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
   <button class="lang-btn" id="btn-ja" onclick="setLang('ja')">JP</button>
 </div>
@@ -298,6 +316,20 @@
     </div>
   </section>
 
+  <!-- STAR WARS CRAWL -->
+  <section id="crawl">
+    <div class="crawl-fade-top"></div>
+    <div class="crawl-fade-bot"></div>
+    <div class="crawl-stage">
+      <div class="crawl-track" id="crawl-track">
+        <div class="crawl-logo" id="crawl-logo"></div>
+        <div class="crawl-intro" id="crawl-intro"></div>
+        <div class="crawl-body" id="crawl-body"></div>
+        <div class="crawl-credits" id="crawl-credits"></div>
+      </div>
+    </div>
+  </section>
+
   <!-- END CARD -->
   <section id="endcard">
     <div class="reveal">
@@ -363,6 +395,19 @@ const i18n = {
     backLink: "← Back to challenge list",
     pauseTxt: "⏸ Pause",
     resumeTxt: "▶ Resume",
+    crawlLogo: "— A DEV April Fools Production —",
+    crawlIntro: n => `The ${n} Saga`,
+    crawlBody: n => `It is a time of glorious uselessness. The DEV April Fools Challenge has called upon the bravest, most pointlessly creative minds across the galaxy.\n\nOne developer — ${n} — answered that call. Armed with nothing but a keyboard, a cat emoji, and an unshakeable belief that 418 I'm a Teapot deserved more respect, they built something the universe had never seen before.\n\nThe judges wept. The teapots rejoiced. The stars themselves rearranged to spell out: W-I-N-N-E-R.\n\nThis victory belongs not just to one developer, but to every coder who ever dared to ask: "What if I just made something completely useless?"`,
+    crawlCredits: n => [
+      { role: "Concept & Visionary", name: n },
+      { role: "Engineering", name: n },
+      { role: "UX Design", name: n },
+      { role: "Sound Design", name: n },
+      { role: "AI Pair Programmer", name: "Antigravity (Google DeepMind)" },
+      { role: "Sponsor", name: "A Very Useless Teapot" },
+      { role: "Special Thanks", name: "RFC 2324 & Larry Masinter" },
+      { role: "No Cats Were Harmed", name: "Confirmed 🐾" },
+    ],
   },
   ja: {
     splashTitle: "今日の主役は誰？",
@@ -413,6 +458,19 @@ const i18n = {
     backLink: "← チャレンジ一覧へ戻る",
     pauseTxt: "⏸ 一時停止",
     resumeTxt: "▶ 再開",
+    crawlLogo: "— DEV April Fools プロダクション —",
+    crawlIntro: n => `${n} サーガ`,
+    crawlBody: n => `これは、栄光ある無駄の時代の物語である。DEV April Fools Challengeは、銀河全土から最も勇敢で、最も意味のない創造力を持つ開発者を召喚した。\n\n一人の開発者 — ${n} — がその呼びかけに応えた。キーボードと猫の絵文字と「418 I'm a Teapot」への揺るぎない敬意だけを武器に、宇宙がかつて見たことのないものを作り上げた。\n\n審査員は泣いた。ティーポットは喜んだ。星々は並び替えられ、こう綴った：当・選・確・定。\n\nこの勝利は一人の開発者だけのものではない。「役に立たないものを作ってみたら？」と問いかけたすべての開発者へ捧げる。`,
+    crawlCredits: n => [
+      { role: "ビジョン & コンセプト", name: n },
+      { role: "エンジニアリング", name: n },
+      { role: "UXデザイン", name: n },
+      { role: "サウンドデザイン", name: n },
+      { role: "AIペアプログラマー", name: "Antigravity (Google DeepMind)" },
+      { role: "スポンサー", name: "役に立たないティーポット" },
+      { role: "スペシャルサンクス", name: "RFC 2324 & Larry Masinter" },
+      { role: "猫に被害なし", name: "確認済み 🐾" },
+    ],
   }
 };
 
@@ -499,6 +557,17 @@ function applyI18n() {
   document.getElementById('end-punchline').textContent = t.endPunchline;
   document.getElementById('back-link').textContent = t.backLink;
 
+  // Crawl
+  if (n && t.crawlLogo && document.getElementById('crawl-logo')) {
+    document.getElementById('crawl-logo').textContent = t.crawlLogo;
+    document.getElementById('crawl-intro').textContent = t.crawlIntro(n);
+    document.getElementById('crawl-body').innerHTML = t.crawlBody(n).replace(/\n\n/g, '<br><br>');
+    const credits = t.crawlCredits(n);
+    document.getElementById('crawl-credits').innerHTML = credits.map(c =>
+      `<div class="crawl-credit-row"><span class="role">${c.role}</span><span class="name">${c.name}</span></div>`
+    ).join('');
+  }
+
   // Pause btn
   updatePauseBtn();
 }
@@ -521,7 +590,24 @@ function startCelebration() {
     confettiBurst(120);
     autoScrolling = true;
     autoScroll();
+    // BGM starts after fanfare
+    setTimeout(() => {
+      SoundEngine.startBGM();
+      document.getElementById('bgm-btn').classList.add('on');
+    }, 1800);
   }, 100);
+
+  // Crawl: start animation when section enters view
+  const crawlObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        document.getElementById('crawl-track').classList.add('running');
+        crawlObs.disconnect();
+      }
+    });
+  }, { threshold: 0.1 });
+  const crawlEl = document.getElementById('crawl');
+  if (crawlEl) crawlObs.observe(crawlEl);
 }
 
 document.getElementById('name-input').addEventListener('keydown', e => {
@@ -631,6 +717,13 @@ function updatePauseBtn() {
   const t = i18n[currentLang];
   if (scrollPaused) { pauseBtn.textContent=t.resumeTxt; scrollCtrl.classList.add('paused'); }
   else { pauseBtn.textContent=t.pauseTxt; scrollCtrl.classList.remove('paused'); }
+}
+
+function toggleBGMBtn() {
+  const on = SoundEngine.toggleBGM();
+  const btn = document.getElementById('bgm-btn');
+  if (on) { btn.classList.add('on'); btn.title = 'Music ON'; }
+  else { btn.classList.remove('on'); btn.title = 'Music OFF'; }
 }
 </script>
 
