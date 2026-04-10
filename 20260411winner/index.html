@@ -366,6 +366,7 @@
       <p class="end-title" id="end-title"></p>
       <p class="end-date" id="end-date"></p>
       <div class="end-punchline" id="end-punchline"></div>
+      <p id="final-thanks" style="margin-top:24px; font-size: 1.1rem; opacity: 0.8; line-height: 1.6;"></p>
       <div style="margin-top:20px"><span class="cat-dance">🐾</span></div>
       <a href="../" class="back-link" id="back-link"></a>
     </div>
@@ -425,6 +426,7 @@ const i18n = {
     backLink: "← Back to challenge list",
     pauseTxt: "⏸ Pause",
     resumeTxt: "▶ Resume",
+    finalThanks: "A huge thank you to the DEV community, every dreamer, and all the coffee/tea lovers across the galaxy. This dream belongs to all of us.",
     galaxyEyebrow: "PRAISE IV",
     galaxyTitle: "The Galactic\nBroadcast",
     galaxyText: n => `NASA has just confirmed: The radio signature of <strong style="color:var(--gold)">${n}</strong>'s code has reached the edge of our solar system.<br>Aliens 50 light-years away are already refactoring their systems to match this perfection.<br>The Voyagers have been overtaken by the sheer speed of this winning wave.`,
@@ -500,6 +502,7 @@ const i18n = {
     backLink: "← チャレンジ一覧へ戻る",
     pauseTxt: "⏸ 一時停止",
     resumeTxt: "▶ 再開",
+    finalThanks: "DEVコミュニティ、すべての夢見る開発者、そして銀河中のコーヒーと紅茶を愛する人々へ。心からの感謝を。これは、私たち全員で掴み取った夢の物語です。",
     galaxyEyebrow: "称賛 IV",
     galaxyTitle: "全銀河への\n宣戦布告",
     galaxyText: n => `NASAが確認しました。<strong style="color:var(--gold)">${n}</strong>のコードの電波信号が太陽系の端に到達しました。<br>50光年先のエイリアンたちは、この美しさに合わせて自分たちのシステムのリファクタリングを始めています。<br>ボイジャーですら、この当選の波の速度に追い抜かれました。`,
@@ -630,6 +633,7 @@ function applyI18n() {
   document.getElementById('end-title').textContent = t.endTitle;
   document.getElementById('end-date').textContent = t.endDate;
   document.getElementById('end-punchline').textContent = t.endPunchline;
+  document.getElementById('final-thanks').textContent = t.finalThanks;
   document.getElementById('back-link').textContent = t.backLink;
 
   // Crawl
