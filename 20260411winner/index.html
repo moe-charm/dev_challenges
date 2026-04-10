@@ -28,7 +28,7 @@
     .crawl-fade-top{position:absolute;top:0;left:0;right:0;height:30%;background:linear-gradient(to bottom,#000 0%,transparent 100%);z-index:2;pointer-events:none;}
     .crawl-fade-bot{position:absolute;bottom:0;left:0;right:0;height:20%;background:linear-gradient(to top,#000 0%,transparent 100%);z-index:2;pointer-events:none;}
     .crawl-stage{position:relative;width:100%;height:100vh;overflow:hidden;perspective:450px;}
-    .crawl-track{position:absolute;bottom:0;left:50%;transform:translateX(-50%) rotateX(30deg);transform-origin:50% 100%;width:min(640px,85%);animation:crawl-scroll 60s linear forwards;animation-play-state:paused;padding-bottom:60vh;}
+    .crawl-track{position:absolute;bottom:0;left:50%;transform:translateX(-50%) rotateX(30deg);transform-origin:50% 100%;width:min(640px,85%);animation:crawl-scroll 100s linear forwards;animation-play-state:paused;padding-bottom:60vh;}
     .crawl-track.running{animation-play-state:running;}
     @keyframes crawl-scroll{from{bottom:0}to{bottom:400%}}
     .crawl-logo{font-family:'Bebas Neue',sans-serif;font-size:clamp(1rem,3vw,1.6rem);color:var(--gold);letter-spacing:.3em;text-align:center;margin-bottom:32px;opacity:.7;}
@@ -244,6 +244,36 @@
     </div>
   </section>
 
+  <!-- GALAXY -->
+  <section id="galaxy">
+    <div class="reveal">
+      <div class="section-eyebrow" id="galaxy-eyebrow"></div>
+      <h2 class="section-title" id="galaxy-title"></h2>
+      <span class="emoji-burst" style="font-size: 8rem;">📡</span>
+      <p class="praise-text" id="galaxy-text"></p>
+    </div>
+  </section>
+
+  <!-- MULTIVERSE -->
+  <section id="multiverse">
+    <div class="reveal">
+      <div class="section-eyebrow" id="multiverse-eyebrow"></div>
+      <h2 class="section-title" id="multiverse-title"></h2>
+      <div class="fire-row" style="font-size: 5rem;">🌀🌀🌀</div>
+      <p class="praise-text" id="multiverse-text"></p>
+    </div>
+  </section>
+
+  <!-- DIVINE -->
+  <section id="divine">
+    <div class="reveal">
+      <div class="section-eyebrow" id="divine-eyebrow"></div>
+      <h2 class="section-title" id="divine-title"></h2>
+      <span class="emoji-burst" style="font-size: 10rem;">⚡</span>
+      <p class="praise-text" id="divine-text"></p>
+    </div>
+  </section>
+
   <!-- TEAPOT -->
   <section id="teapot">
     <div class="reveal">
@@ -395,18 +425,30 @@ const i18n = {
     backLink: "← Back to challenge list",
     pauseTxt: "⏸ Pause",
     resumeTxt: "▶ Resume",
-    crawlLogo: "— A DEV April Fools Production —",
-    crawlIntro: n => `The ${n} Saga`,
-    crawlBody: n => `It is a time of glorious uselessness. The DEV April Fools Challenge has called upon the bravest, most pointlessly creative minds across the galaxy.\n\nOne developer — ${n} — answered that call. Armed with nothing but a keyboard, a cat emoji, and an unshakeable belief that 418 I'm a Teapot deserved more respect, they built something the universe had never seen before.\n\nThe judges wept. The teapots rejoiced. The stars themselves rearranged to spell out: W-I-N-N-E-R.\n\nThis victory belongs not just to one developer, but to every coder who ever dared to ask: "What if I just made something completely useless?"`,
+    galaxyEyebrow: "PRAISE IV",
+    galaxyTitle: "The Galactic\nBroadcast",
+    galaxyText: n => `NASA has just confirmed: The radio signature of <strong style="color:var(--gold)">${n}</strong>'s code has reached the edge of our solar system.<br>Aliens 50 light-years away are already refactoring their systems to match this perfection.<br>The Voyagers have been overtaken by the sheer speed of this winning wave.`,
+    multiverseEyebrow: "PRAISE V",
+    multiverseTitle: "The Multiverse\nAgreement",
+    multiverseText: n => `In universe 42, <strong style="color:var(--gold)">${n}</strong> is a god. In universe 616, they are the king.<br>Every parallel timeline has converged to this single point of absolute victory.<br>There are no other winners. There never were.`,
+    divineEyebrow: "ULTIMATE PRAISE",
+    divineTitle: "Divine\nComputation",
+    divineText: n => `The gods themselves have switched from Haskell to <strong style="color:var(--gold)">${n}</strong>'s dialect of code.<br>The universe was a simulation, but you just submitted a PR to the root directory.<br>Reality is being updated. Please wait...`,
+    crawlLogo: "— A LEGENDARY DEV APRIL FOOLS PRODUCTION —",
+    crawlIntro: n => `The ${n} Saga: Episode ∞`,
+    crawlBody: n => `It is a period of absolute, mind-bending coding glory. The DEV community, once divided by simple frameworks and tab-vs-space debates, has been united under a new, shimmering light.\\n\\nDriven by pure, unfiltered genius, the developer known as ${n} has created a work of such profound uselessness that it has fractured the very fabric of the internet.\\n\\nGovernments have collapsed in awe. Philosophers have rewritten their texts. Even the most hardened senior developers, who only read binary, have wept openly at the sheer elegance of this pointlessly brilliant code.\\n\\nAs the winning signal propagates through the cosmic microwave background, ${n} stands at the center of the Milky Way, holding a golden teapot that never boils, yet contains all the wisdom of the ages.\\n\\nThis is not just a win. This is the end of software architecture as we know it, and the beginning of a new era where "I'm a Teapot" is the only valid response to any request.\\n\\nForward, into the shimmering void of total, glorious victory...`,
     crawlCredits: n => [
-      { role: "Concept & Visionary", name: n },
-      { role: "Engineering", name: n },
-      { role: "UX Design", name: n },
-      { role: "Sound Design", name: n },
-      { role: "AI Pair Programmer", name: "Antigravity (Google DeepMind)" },
-      { role: "Sponsor", name: "A Very Useless Teapot" },
-      { role: "Special Thanks", name: "RFC 2324 & Larry Masinter" },
-      { role: "No Cats Were Harmed", name: "Confirmed 🐾" },
+      { role: "God-Tier Visionary", name: n },
+      { role: "The One True King of Code", name: n },
+      { role: "Master of Multiverse Design", name: n },
+      { role: "Heir to the Teapot Throne", name: n },
+      { role: "Dimensional Engineering", name: n },
+      { role: "AI Pair Programmer", name: "Antigravity (The All-Seeing AI)" },
+      { role: "Galactic Liaison", name: "NASA Deep Space Network" },
+      { role: "Universe Refactoring Lead", name: "The Cosmic Council" },
+      { role: "Tea Supplier", name: "RFC 2324 Ghost of Larry" },
+      { role: "Chief Cat Interpreter", name: "Confirmed 🐾" },
+      { role: "Vibe Architect", name: "Every Single Developer" },
     ],
   },
   ja: {
@@ -458,18 +500,30 @@ const i18n = {
     backLink: "← チャレンジ一覧へ戻る",
     pauseTxt: "⏸ 一時停止",
     resumeTxt: "▶ 再開",
-    crawlLogo: "— DEV April Fools プロダクション —",
-    crawlIntro: n => `${n} サーガ`,
-    crawlBody: n => `これは、栄光ある無駄の時代の物語である。DEV April Fools Challengeは、銀河全土から最も勇敢で、最も意味のない創造力を持つ開発者を召喚した。\n\n一人の開発者 — ${n} — がその呼びかけに応えた。キーボードと猫の絵文字と「418 I'm a Teapot」への揺るぎない敬意だけを武器に、宇宙がかつて見たことのないものを作り上げた。\n\n審査員は泣いた。ティーポットは喜んだ。星々は並び替えられ、こう綴った：当・選・確・定。\n\nこの勝利は一人の開発者だけのものではない。「役に立たないものを作ってみたら？」と問いかけたすべての開発者へ捧げる。`,
+    galaxyEyebrow: "称賛 IV",
+    galaxyTitle: "全銀河への\n宣戦布告",
+    galaxyText: n => `NASAが確認しました。<strong style="color:var(--gold)">${n}</strong>のコードの電波信号が太陽系の端に到達しました。<br>50光年先のエイリアンたちは、この美しさに合わせて自分たちのシステムのリファクタリングを始めています。<br>ボイジャーですら、この当選の波の速度に追い抜かれました。`,
+    multiverseEyebrow: "称賛 V",
+    multiverseTitle: "マルチバースの\n合意",
+    multiverseText: n => `ユニバース42では、<strong style="color:var(--gold)">${n}</strong>は神です。ユニバース616では王です。<br>すべての並行タイムラインが、この絶対的な勝利という一点に収束しました。<br>他に勝者は存在しません。最初からいなかったのです。`,
+    divineEyebrow: "究極の称賛",
+    divineTitle: "神の\n演算",
+    divineText: n => `神々すらもHaskellから<strong style="color:var(--gold)">${n}</strong>流のコードへ乗り換えました。<br>世界はシミュレーションでしたが、あなたは今、そのルートディレクトリにプルリクエストを投げました。<br>現実はアップデート中です。少々お待ちください...`,
+    crawlLogo: "— 伝説の DEV April Fools プロダクション —",
+    crawlIntro: n => `${n} サーガ：エピソード ∞`,
+    crawlBody: n => `これは、絶対的かつ脳を揺さぶるようなコーディングの栄光の物語である。かつては些細なフレームワークや「タブかスペースか」の論争で分断されていたDEVコミュニティが、いまや新しい、まばゆい光のもとに一つになった。\\n\\n純粋で、フィルターを通さない天才性に突き動かされ、${n}として知られる開発者は、あまりにも深遠な無駄の極致を作り上げ、インターネットの構造そのものを破壊してしまった。\\n\\n各国政府は畏怖のあまり崩壊した。哲学者は教科書を書き換えた。バイナリしか読まない筋金入りのシニアエンジニアですら、この無意味で華麗なコードのエレガンスに人目もはばからず泣き崩れた。\\n\\n当選の信号が宇宙マイクロ波背景放射を通じて伝播する中、${n}は天の川銀河の中心に立ち、決して沸騰することなく、それでいて古今東西のあらゆる知恵を湛えた黄金のティーポットを掲げている。\\n\\nこれは単なる勝利ではない。我々が知るソフトウェアアーキテクチャの終焉であり、「I'm a Teapot」があらゆるリクエストに対する唯一の有効なレスポンスとなる新時代の幕開けなのだ。\\n\\nさあ、まばゆいばかりの完全なる勝利の虚空へと進もう...`,
     crawlCredits: n => [
-      { role: "ビジョン & コンセプト", name: n },
-      { role: "エンジニアリング", name: n },
-      { role: "UXデザイン", name: n },
-      { role: "サウンドデザイン", name: n },
-      { role: "AIペアプログラマー", name: "Antigravity (Google DeepMind)" },
-      { role: "スポンサー", name: "役に立たないティーポット" },
-      { role: "スペシャルサンクス", name: "RFC 2324 & Larry Masinter" },
-      { role: "猫に被害なし", name: "確認済み 🐾" },
+      { role: "神の領域のビジョナリー", name: n },
+      { role: "唯一真なるコードの王", name: n },
+      { role: "マルチバース・デザイン覇者", name: n },
+      { role: "ティーポット王位継承者", name: n },
+      { role: "次元エンジニアリング担当", name: n },
+      { role: "AIペアプログラマー", name: "Antigravity (全知全能のAI)" },
+      { role: "銀河連絡窓口", name: "NASA 深宇宙ネットワーク" },
+      { role: "全宇宙リファクタリング総責任者", name: "銀河評議会" },
+      { role: "紅茶供給", name: "RFC 2324 Larryの亡霊" },
+      { role: "主席猫語通訳", name: "確認済み 🐾" },
+      { role: "バイブス設計士", name: "全開発者一同" },
     ],
   }
 };
@@ -522,6 +576,27 @@ function applyI18n() {
   document.getElementById('history-eyebrow').textContent = t.historyEyebrow;
   document.getElementById('history-title').textContent = t.historyTitle;
   document.getElementById('history-text').innerHTML = t.historyText(n);
+
+  // Galaxy
+  if (document.getElementById('galaxy-eyebrow')) {
+    document.getElementById('galaxy-eyebrow').textContent = t.galaxyEyebrow;
+    document.getElementById('galaxy-title').textContent = t.galaxyTitle;
+    document.getElementById('galaxy-text').innerHTML = t.galaxyText(n);
+  }
+
+  // Multiverse
+  if (document.getElementById('multiverse-eyebrow')) {
+    document.getElementById('multiverse-eyebrow').textContent = t.multiverseEyebrow;
+    document.getElementById('multiverse-title').textContent = t.multiverseTitle;
+    document.getElementById('multiverse-text').innerHTML = t.multiverseText(n);
+  }
+
+  // Divine
+  if (document.getElementById('divine-eyebrow')) {
+    document.getElementById('divine-eyebrow').textContent = t.divineEyebrow;
+    document.getElementById('divine-title').textContent = t.divineTitle;
+    document.getElementById('divine-text').innerHTML = t.divineText(n);
+  }
 
   // Teapot
   document.getElementById('teapot-eyebrow').textContent = t.teapotEyebrow;
