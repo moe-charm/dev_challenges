@@ -28,6 +28,23 @@ flutter run -d windows
 flutter build windows --debug
 ```
 
+## Release
+
+To distribute the app, package the entire `build/windows/x64/runner/Release/` folder as a ZIP.
+
+The ZIP should include:
+
+- `winner_simulator_app.exe`
+- `data/`
+- `webview_windows_plugin.dll`
+- `WebView2Loader.dll`
+- any other files in the Release folder
+
+## Runtime Notes
+
+- The app still needs the Microsoft WebView2 Runtime installed on the target machine.
+- Because the HTML challenge is embedded, there is no separate content folder to ship.
+
 ## Notes
 
 The HTML challenge lives in `assets/20260411winner/` and is bundled with the app.
