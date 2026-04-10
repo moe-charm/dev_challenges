@@ -136,28 +136,10 @@ window.SoundEngine = (() => {
 
   /* ── 花火ぼん！ ── */
   function playFirework() {
-    const c = init();
-    // thump
-    const osc = c.createOscillator();
-    const g   = c.createGain();
-    osc.type = 'sine';
-    osc.frequency.setValueAtTime(180, c.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(40, c.currentTime + 0.3);
-    osc.connect(g); g.connect(c.destination);
-    g.gain.setValueAtTime(0.4, c.currentTime);
-    g.gain.exponentialRampToValueAtTime(0.001, c.currentTime + 0.35);
-    osc.start(); osc.stop(c.currentTime + 0.35);
-    // crackle
-    const size = Math.floor(c.sampleRate * 0.15);
-    const buf  = c.createBuffer(1, size, c.sampleRate);
-    const d    = buf.getChannelData(0);
-    for (let i = 0; i < size; i++) d[i] = Math.random() * 2 - 1;
-    const src = c.createBufferSource(); src.buffer = buf;
-    const g2  = c.createGain();
-    g2.gain.setValueAtTime(0.15, c.currentTime + 0.05);
-    g2.gain.exponentialRampToValueAtTime(0.001, c.currentTime + 0.2);
-    src.connect(g2); g2.connect(c.destination);
-    src.start(c.currentTime + 0.05); src.stop(c.currentTime + 0.2);
+    init();
+    const sound = new Audio('firework.mp3');
+    sound.volume = 0.6;
+    sound.play().catch(e => {}); 
   }
 
   /* ── 🎵 BGM: External MP3 (majestic-sky.mp3) ── */
