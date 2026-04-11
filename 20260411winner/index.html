@@ -680,7 +680,10 @@ function startCelebration() {
   const crawlObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        document.getElementById('crawl-track').classList.add('running');
+        const tr = document.getElementById('crawl-track');
+        tr.classList.add('running');
+        isCrawlPlaying = true;
+        tr.addEventListener('animationend', () => isCrawlPlaying = false, {once:true});
         crawlObs.disconnect();
       }
     });
@@ -765,14 +768,14 @@ function animateCounter(el, target, pre='', suf='', dur=2000) {
 }
 
 // ===== AUTO SCROLL =====
-let autoScrolling = false, scrollPaused = false;
+let autoScrolling = false, scrollPaused = false, isCrawlPlaying = false;
 const SPEED = 1.2;
 const pauseBtn = document.getElementById('pause-btn');
 const scrollCtrl = document.getElementById('scroll-control');
 pauseBtn._manual = false;
 
 function autoScroll() {
-  if (!scrollPaused && autoScrolling) {
+  if (!scrollPaused && autoScrolling && !isCrawlPlaying) {
     const max = document.body.scrollHeight - window.innerHeight;
     if (window.scrollY < max) window.scrollBy(0, SPEED);
     else { autoScrolling = false; scrollCtrl.style.display='none'; confettiBurst(200); return; }
