@@ -28,9 +28,9 @@
     .crawl-fade-top{position:absolute;top:0;left:0;right:0;height:30%;background:linear-gradient(to bottom,#000 0%,transparent 100%);z-index:2;pointer-events:none;}
     .crawl-fade-bot{position:absolute;bottom:0;left:0;right:0;height:20%;background:linear-gradient(to top,#000 0%,transparent 100%);z-index:2;pointer-events:none;}
     .crawl-stage{position:relative;width:100%;height:100vh;overflow:hidden;}
-    .crawl-track{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:min(1000px,94%);animation:crawl-scroll 100s linear forwards;animation-play-state:paused;padding-bottom:20vh;}
+    .crawl-track{position:absolute;top:100vh;left:50%;transform:translateX(-50%);width:min(1000px,94%);animation:crawl-scroll 100s linear forwards;animation-play-state:paused;padding-bottom:20vh;}
     .crawl-track.running{animation-play-state:running;}
-    @keyframes crawl-scroll{from{bottom:0}to{bottom:250%}}
+    @keyframes crawl-scroll{from{top:100vh;}to{top:-250%;}}
     .crawl-logo{font-family:'Bebas Neue',sans-serif;font-size:clamp(1rem,3vw,1.6rem);color:var(--gold);letter-spacing:.3em;text-align:center;margin-bottom:32px;opacity:.7;}
     .crawl-intro{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,10vw,7rem);color:var(--gold);text-align:center;line-height:1.1;margin-bottom:48px;filter:drop-shadow(0 0 30px var(--gold-glow));}
     .crawl-body{color:rgba(255,215,0,.8);font-size:clamp(1.2rem,3vw,1.8rem);line-height:1.8;text-align:center;margin-bottom:48px;}
@@ -640,7 +640,7 @@ function applyI18n() {
   if (n && t.crawlLogo && document.getElementById('crawl-logo')) {
     document.getElementById('crawl-logo').textContent = t.crawlLogo;
     document.getElementById('crawl-intro').textContent = t.crawlIntro(n);
-    document.getElementById('crawl-body').innerHTML = t.crawlBody(n).replace(/\n\n/g, '<br><br>');
+    document.getElementById('crawl-body').innerHTML = t.crawlBody(n).replace(/\\n\\n/g, '<br><br>').replace(/\n\n/g, '<br><br>');
     const credits = t.crawlCredits(n);
     document.getElementById('crawl-credits').innerHTML = credits.map(c =>
       `<div class="crawl-credit-row"><span class="role">${c.role}</span><span class="name">${c.name}</span></div>`
