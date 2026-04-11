@@ -24,13 +24,11 @@
     #bgm-btn{padding:5px 12px;border-radius:99px;border:1px solid rgba(255,255,255,.2);background:rgba(0,0,0,.4);color:rgba(255,255,255,.5);font-size:.8rem;cursor:pointer;backdrop-filter:blur(8px);transition:all .2s;margin-right:4px;}
     #bgm-btn.on{border-color:var(--gold);color:var(--gold);}
     /* ===== STAR WARS CRAWL ===== */
-    #crawl{background:#000;min-height:100vh;overflow:hidden;position:relative;}
-    .crawl-fade-top{position:absolute;top:0;left:0;right:0;height:30%;background:linear-gradient(to bottom,#000 0%,transparent 100%);z-index:2;pointer-events:none;}
-    .crawl-fade-bot{position:absolute;bottom:0;left:0;right:0;height:20%;background:linear-gradient(to top,#000 0%,transparent 100%);z-index:2;pointer-events:none;}
-    .crawl-stage{position:relative;width:100%;height:100vh;overflow:hidden;}
-    .crawl-track{position:absolute;top:100vh;left:50%;transform:translateX(-50%);width:min(1000px,94%);animation:crawl-scroll 100s linear forwards;animation-play-state:paused;padding-bottom:20vh;}
-    .crawl-track.running{animation-play-state:running;}
-    @keyframes crawl-scroll{from{top:100vh;}to{top:-250%;}}
+    #crawl{background:#000;position:relative;padding:150px 0;}
+    .crawl-fade-top{position:absolute;top:0;left:0;right:0;height:150px;background:linear-gradient(to bottom,#000 0%,transparent 100%);z-index:2;pointer-events:none;}
+    .crawl-fade-bot{position:absolute;bottom:0;left:0;right:0;height:150px;background:linear-gradient(to top,#000 0%,transparent 100%);z-index:2;pointer-events:none;}
+    .crawl-stage{position:relative;width:100%;display:flex;justify-content:center;}
+    .crawl-track{width:min(1000px,94%);padding:40px 0;}
     .crawl-logo{font-family:'Bebas Neue',sans-serif;font-size:clamp(1rem,3vw,1.6rem);color:var(--gold);letter-spacing:.3em;text-align:center;margin-bottom:32px;opacity:.7;}
     .crawl-intro{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,10vw,7rem);color:var(--gold);text-align:center;line-height:1.1;margin-bottom:48px;filter:drop-shadow(0 0 30px var(--gold-glow));}
     .crawl-body{color:rgba(255,215,0,.8);font-size:clamp(1.2rem,3vw,1.8rem);line-height:1.8;text-align:center;margin-bottom:48px;}
@@ -676,20 +674,7 @@ function startCelebration() {
     }, 1800);
   }, 100);
 
-  // Crawl: start animation when section enters view
-  const crawlObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        const tr = document.getElementById('crawl-track');
-        tr.classList.add('running');
-        isCrawlPlaying = true;
-        tr.addEventListener('animationend', () => isCrawlPlaying = false, {once:true});
-        crawlObs.disconnect();
-      }
-    });
-  }, { threshold: 0.5 });
-  const crawlEl = document.getElementById('crawl');
-  if (crawlEl) crawlObs.observe(crawlEl);
+  // Crawl now flows naturally with the rest of the page.
 }
 
 document.getElementById('name-input').addEventListener('keydown', e => {
@@ -768,14 +753,14 @@ function animateCounter(el, target, pre='', suf='', dur=2000) {
 }
 
 // ===== AUTO SCROLL =====
-let autoScrolling = false, scrollPaused = false, isCrawlPlaying = false;
-const SPEED = 1.2;
+let autoScrolling = false, scrollPaused = false;
+const SPEED = 1.2; // Slow and steady
 const pauseBtn = document.getElementById('pause-btn');
 const scrollCtrl = document.getElementById('scroll-control');
 pauseBtn._manual = false;
 
 function autoScroll() {
-  if (!scrollPaused && autoScrolling && !isCrawlPlaying) {
+  if (!scrollPaused && autoScrolling) {
     const max = document.body.scrollHeight - window.innerHeight;
     if (window.scrollY < max) window.scrollBy(0, SPEED);
     else { autoScrolling = false; scrollCtrl.style.display='none'; confettiBurst(200); return; }
