@@ -732,13 +732,23 @@ function initObservers() {
   const statsObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        animateCounter(document.getElementById('cnt-devs'), 99.7, '', '%');
-        animateCounter(document.getElementById('cnt-stars'), 1428571);
-        animateCounter(document.getElementById('cnt-teapot'), 418, '+', '%');
+        animateCounter(document.getElementById('cnt-devs'), 99.7, '', '%', 4000);
+        animateCounter(document.getElementById('cnt-stars'), 1428571, '', '', 6500);
+        animateCounter(document.getElementById('cnt-teapot'), 418, '+', '%', 5000);
+        
+        setTimeout(() => {
+          const stEl = document.getElementById('cnt-stars');
+          let currentStars = 1428571;
+          setInterval(() => {
+            currentStars += Math.floor(Math.random() * 3) + 1;
+            stEl.textContent = currentStars.toLocaleString();
+          }, 2100);
+        }, 6500);
+
         confettiBurst(100); statsObs.disconnect();
       }
     });
-  }, { threshold:0.3 });
+  }, { threshold:0.6 });
   const st = document.getElementById('stats');
   if (st) statsObs.observe(st);
 }
